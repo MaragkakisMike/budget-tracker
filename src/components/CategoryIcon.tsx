@@ -1,0 +1,30 @@
+import { styles } from "@gorhom/bottom-sheet/lib/typescript/components/bottomSheetScrollable/BottomSheetFlashList";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { TColors } from "../styles/colors";
+import useStyles from "../hooks/useStyles";
+
+export const CategoryIcon = ({ category }) => {
+  const { styles } = useStyles(createStyles);
+  return (
+    <View
+      style={[styles.iconContainer, { backgroundColor: `${category.color}20` }]}
+    >
+      <FontAwesome5 name={category.icon} size={20} color={category.color} />
+    </View>
+  );
+};
+
+const createStyles = (colors: TColors) =>
+  StyleSheet.create({
+    iconContainer: {
+      width: 40,
+      height: 40,
+      justifyContent: "center",
+      alignItems: "center",
+      margin: 2,
+      borderRadius: 100 / 2,
+      backgroundColor: "transparent",
+    },
+  });
