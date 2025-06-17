@@ -31,9 +31,7 @@ export const HistoryItem = ({ record }: { record: HistoryRecord }) => {
           }}
         />
         <View style={styles.detailsContainer}>
-          <Text style={[styles.categoryText, { color: colors.black }]}>
-            {record.title}
-          </Text>
+          <Text style={[styles.categoryText]}>{record.title}</Text>
           <View style={{ flexDirection: "row", gap: 3 }}>
             <Text style={styles.dateText}>
               {format(new Date(record.date), "MMM d")} |
@@ -135,6 +133,7 @@ const createStyles = (colors: TColors) =>
     categoryText: {
       fontSize: 12,
       marginBottom: 2,
+      color: colors.textPrimary,
     },
     titleText: {
       fontSize: 14,
@@ -153,6 +152,7 @@ const createStyles = (colors: TColors) =>
       fontSize: 14,
       fontWeight: "600",
       marginLeft: "auto",
+      color: colors.textPrimary,
     },
     expenseText: {
       color: colors.red,

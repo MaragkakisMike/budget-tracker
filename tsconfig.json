@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "resolveJsonModule": true,
     "paths": {
       "@/*": ["./*"]
     },
     "jsx": "react-native"
   },
   "extends": "expo/tsconfig.base",
+  "esModuleInterop": true,
   "include": [
     "**/*.ts",
     "**/*.tsx",

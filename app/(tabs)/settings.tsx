@@ -1,5 +1,4 @@
 // Settings.tsx
-import React from "react";
 import { View, Text, StyleSheet, ScrollView, Switch } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Container from "@/src/components/Container";
@@ -105,15 +104,6 @@ const Settings: React.FC = () => {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionLabel}>{t("settings.about")}</Text>
-          <View style={styles.sectionContent}>
-            <SettingItem
-              title={t("settings.app_version")}
-              rightElement={<Text style={styles.versionText}>{VERSION}</Text>}
-            />
-          </View>
-        </View>
-        <View style={styles.section}>
           <Text style={styles.sectionLabel}>{t("Export/Import data")}</Text>
           <View style={styles.sectionContent}>
             <SettingItem
@@ -129,6 +119,16 @@ const Settings: React.FC = () => {
               rightElement={
                 <Button title={t("Select")} onPress={selectExportDirectory} />
               }
+            />
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>{t("settings.about")}</Text>
+          <View style={styles.sectionContent}>
+            <SettingItem
+              title={t("settings.app_version")}
+              rightElement={<Text style={styles.versionText}>{VERSION}</Text>}
             />
           </View>
         </View>

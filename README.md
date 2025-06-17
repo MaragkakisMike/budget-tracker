@@ -4,7 +4,7 @@ Budget Tracker is a React Native app built with Expo to help users manage their 
 
 ## Features
 
-- **User Accounts**
+- **Money Accounts**
 
   - Create an account
   - Preview account details
@@ -16,11 +16,17 @@ Budget Tracker is a React Native app built with Expo to help users manage their 
   - Delete expense history records
   - Update account balance accordingly
 
+- **Analysis**
+
+  - View spending patterns and insights
+  - Analyze financial data over time
+
 - **Categories**
 
-  - Create, edit, and delete categories for transactions
+  - Create, edit, and delete categories for expenses
 
 - **Settings**
+
   - Toggle **Dark Mode** for a better visual experience
   - Select preferred **language** for localization support
 
@@ -51,7 +57,7 @@ The app follows a **tab-based navigation** system with the following pages:
    ```
 2. Install dependencies:
    ```sh
-   npm install  # or yarn install
+   npm install
    ```
 3. Start the Expo development server:
    ```sh
@@ -64,8 +70,8 @@ The app follows a **tab-based navigation** system with the following pages:
 
 1. npx expo prebuild
 2. npx expo run:android --variant release (Make sure an android emulator is running, or a physical device is connected)
-
-3. After the build is complete, you can download the apk file from the Expo dashboard.
+3. After the build is complete, you can find the APK file in the `android/app/build/outputs/apk/release` directory.
+4. The apk is named `app-release.apk`.
 
 ## License
 
