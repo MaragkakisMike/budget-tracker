@@ -37,7 +37,6 @@ export const AccountBottomSheet: FC<AccountBottomSheetProps> = ({
 }) => {
   const drizzleDB = useDatabase();
   const { t } = useTranslation();
-  const { colors } = useColors();
   const { styles } = useStyles(createStyles);
 
   const isEditMode = !!account;
@@ -54,7 +53,6 @@ export const AccountBottomSheet: FC<AccountBottomSheetProps> = ({
     },
   });
 
-  // Reset form when account changes
   useEffect(() => {
     if (account) {
       reset({
@@ -83,7 +81,7 @@ export const AccountBottomSheet: FC<AccountBottomSheetProps> = ({
         balance: balance,
       });
     }
-
+    reset();
     if (onSave) onSave();
     bottomSheetModalRef.current?.dismiss();
   };
