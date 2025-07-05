@@ -28,6 +28,7 @@ const Colors: ColorPalettes = {
   dark: {
     secondary: "#2A2E37",
     background: "#181A20",
+    primaryLight: "#1A1D24",
     containerBackground: "#242731",
     textPrimary: sharedColors.white,
     textSecondary: "#A0A4B0",
@@ -40,6 +41,7 @@ const Colors: ColorPalettes = {
   light: {
     secondary: "#D8DEE9",
     background: "#F0F4F8",
+    primaryLight: "#E3F2FD",
     containerBackground: "#FFFFFF",
     textPrimary: "#2D3436",
     textSecondary: "#636E72",

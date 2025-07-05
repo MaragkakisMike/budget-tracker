@@ -41,6 +41,7 @@
   },
   "transactions": {
     "transfer": "Transfer",
+    "transfers": "Transfers",
     "income": "Income",
     "income_label": "Income",
     "expenses": "Expenses",
@@ -85,5 +86,10 @@
       "amount": "Amount must be a number",
       "account": "Accounts must be different"
     }
+  },
+  "common": {
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "thisYear": "This Year"
   }
 }

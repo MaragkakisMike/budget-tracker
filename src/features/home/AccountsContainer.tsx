@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { Text, View, StyleSheet, ScrollView, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { DEFAULT_PADDING } from "../../constants";
+import { DEFAULT_PADDING } from "@/src/constants";
 import { getAccounts } from "@/src/db/queries/accounts";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import { TColors } from "@/src/styles/colors";

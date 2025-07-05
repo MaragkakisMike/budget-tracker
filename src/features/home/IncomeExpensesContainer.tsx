@@ -5,11 +5,7 @@ import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
 import useColors from "@/src/stores/theme-store";
 import { useTranslation } from "react-i18next";
-import {
-  getMonthlyBreakdownByCategory,
-  getMonthlyIncomeExpense,
-  getTotalIncomeExpense,
-} from "@/src/db/queries/actions";
+import { thisMonthIncomeExpense } from "@/src/utils/analysis";
 import useDatabase from "@/src/hooks/useDatabase";
 
 import { useRef, useState } from "react";
@@ -20,7 +16,8 @@ const IncomeExpensesContainer = ({ onSelectAction }) => {
   const { t } = useTranslation();
   const drizzleDB = useDatabase();
   const [selectedAction, setSelectedAction] = useState<"income" | "expense">();
-  const { monthlyIncome, monthlyExpense } = getMonthlyIncomeExpense(drizzleDB);
+  const { totalIncome: monthlyIncome, totalExpense: monthlyExpense } =
+    thisMonthIncomeExpense(drizzleDB);
   const indicatorPosition = useRef(new Animated.Value(0)).current;
   const indicatorColor = useRef(new Animated.Value(0)).current;
 

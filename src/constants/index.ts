@@ -1,5 +1,6 @@
 export const DEFAULT_PADDING = 16;
 export const VERSION = "1.0.0";
+
 export const categoryIcons = [
   // 🏠 Home & Utilities
   "home", // Rent/Mortgage

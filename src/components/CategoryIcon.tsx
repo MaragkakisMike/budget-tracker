@@ -5,11 +5,15 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { TColors } from "../styles/colors";
 import useStyles from "../hooks/useStyles";
 
-export const CategoryIcon = ({ category }) => {
+export const CategoryIcon = ({ category, size = "sm" }) => {
   const { styles } = useStyles(createStyles);
   return (
     <View
-      style={[styles.iconContainer, { backgroundColor: `${category.color}20` }]}
+      style={[
+        styles.iconContainer,
+        styles[size],
+        { backgroundColor: `${category.color}20` },
+      ]}
     >
       <FontAwesome5 name={category.icon} size={20} color={category.color} />
     </View>
@@ -19,12 +23,18 @@ export const CategoryIcon = ({ category }) => {
 const createStyles = (colors: TColors) =>
   StyleSheet.create({
     iconContainer: {
-      width: 40,
-      height: 40,
       justifyContent: "center",
       alignItems: "center",
       margin: 2,
       borderRadius: 100 / 2,
       backgroundColor: "transparent",
+    },
+    sm: {
+      width: 40,
+      height: 40,
+    },
+    md: {
+      width: 50,
+      height: 50,
     },
   });

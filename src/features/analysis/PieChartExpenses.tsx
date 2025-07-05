@@ -16,20 +16,18 @@ import useStyles from "@/src/hooks/useStyles";
 import { useTranslation } from "react-i18next";
 import { Category } from "@/src/db/schema";
 
-const PieChartExpenses = ({ expenseCategories, monthlyExpense }) => {
+const PieChartExpenses = ({ expenseCategories, totalExpense }) => {
   const { colors } = useColors();
   const { styles } = useStyles(createStyles);
   const { t } = useTranslation();
   const [selected, setSelected] = useState<string | null>(null);
 
-  // Dynamic sizing
   const screenWidth = Dimensions.get("window").width;
-  const chartSize = screenWidth * 0.8; // 80% of screen width
+  const chartSize = screenWidth * 0.8;
   const viewBoxSize = 250;
   const radius = 110;
   const innerRadius = 80;
 
-  // Memoize pie data to prevent unnecessary recalculations
   const pieData = pie<Category>().value((d) => d.totalAmount)(
     expenseCategories
   );
@@ -46,17 +44,15 @@ const PieChartExpenses = ({ expenseCategories, monthlyExpense }) => {
   };
 
   const unAssignedExpenses = useMemo(() => {
-    // get total expeses of all categories
     const totalAssigned = expenseCategories.reduce(
       (acc, cat) => acc + cat.totalAmount,
       0
     );
-    if (totalAssigned < monthlyExpense) {
-      return monthlyExpense - totalAssigned;
+    if (totalAssigned < totalExpense) {
+      return totalExpense - totalAssigned;
     }
   }, [expenseCategories]);
 
-  // Calculate selected category details
   const selectedCategory = useMemo(
     () => expenseCategories.find((cat) => cat.categoryId === selected),
     [selected, expenseCategories]
@@ -122,7 +118,7 @@ const PieChartExpenses = ({ expenseCategories, monthlyExpense }) => {
           >
             {selectedCategory
               ? `€${selectedCategory.totalAmount}`
-              : `€${monthlyExpense}`}
+              : `€${totalExpense}`}
           </SvgText>
 
           {unAssignedExpenses && !selectedCategory && (
