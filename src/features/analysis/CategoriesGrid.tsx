@@ -2,12 +2,14 @@ import { Category } from "@/src/types/category";
 import { FC } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import CategoryCard from "./CategoryCard";
+import { useRouter } from "expo-router";
 
 type Props = {
   categories: Category[];
 };
 
 export const CategoriesGrid: FC<Props> = ({ categories }) => {
+  const router = useRouter();
   return (
     <View style={styles.cardsContainer}>
       {categories.map((category) => (
@@ -15,7 +17,9 @@ export const CategoriesGrid: FC<Props> = ({ categories }) => {
           key={category.categoryId}
           category={category}
           onPress={() =>
-            console.log(`Selected category: ${category.categoryName}`)
+            router.navigate(
+              `/(tabs)/analysis/selectedCategory/${category.categoryId}`
+            )
           }
         />
       ))}

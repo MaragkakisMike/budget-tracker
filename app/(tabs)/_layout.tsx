@@ -85,6 +85,7 @@ export default () => {
                 </Text>
               </View>
             ),
+            popToTopOnBlur: true,
           }}
         />
         <Tabs.Screen

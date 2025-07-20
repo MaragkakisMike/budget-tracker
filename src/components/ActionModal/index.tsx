@@ -17,7 +17,7 @@ function ActionsModal({ isModalVisible, toggleModal }) {
   const handleActionPress = (action) => {
     invalidateSelectedAction();
     toggleModal();
-    router.navigate(`/${action.toLowerCase()}`);
+    router.navigate(`/action/${action.toLowerCase()}`);
   };
 
   const handleOverlayPress = () => {

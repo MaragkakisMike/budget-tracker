@@ -3,14 +3,7 @@ import { FC, useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import PieChartExpenses from "@/src/features/analysis/PieChartExpenses";
 import useDatabase from "@/src/hooks/useDatabase";
-import {
-  thisWeekBreakdownByCategory,
-  thisWeekIncomeExpense,
-  thisMonthBreakdownByCategory,
-  thisMonthIncomeExpense,
-  thisYearBreakdownByCategory,
-  thisYearIncomeExpense,
-} from "@/src/utils/analysis";
+import { useAnalysis } from "@/src/hooks/useAnalysis";
 import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
 import useColors from "@/src/stores/theme-store";
@@ -26,32 +19,11 @@ const Analysis: FC = () => {
   const { t } = useTranslation();
   const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>("week");
 
-  const getDataForPeriod = (period: TimePeriod) => {
-    switch (period) {
-      case "week":
-        return {
-          categories: thisWeekBreakdownByCategory(drizzleDB),
-          analytics: thisWeekIncomeExpense(drizzleDB),
-        };
-      case "month":
-        return {
-          categories: thisMonthBreakdownByCategory(drizzleDB),
-          analytics: thisMonthIncomeExpense(drizzleDB),
-        };
-      case "year":
-        return {
-          categories: thisYearBreakdownByCategory(drizzleDB),
-          analytics: thisYearIncomeExpense(drizzleDB),
-        };
-      default:
-        return {
-          categories: thisWeekBreakdownByCategory(drizzleDB),
-          analytics: thisWeekIncomeExpense(drizzleDB),
-        };
-    }
-  };
-
-  const { categories, analytics } = getDataForPeriod(selectedPeriod);
+  // Use the custom hook for live data
+  const { analytics, categories, isLoading } = useAnalysis(
+    drizzleDB,
+    selectedPeriod
+  );
 
   const handlePeriodSelect = (period: TimePeriod) => {
     setSelectedPeriod(period);
@@ -62,6 +34,19 @@ const Analysis: FC = () => {
     { key: "month", label: t("common.thisMonth") },
     { key: "year", label: t("common.thisYear") },
   ] as const;
+
+  // Show loading state if needed
+  if (isLoading) {
+    return (
+      <Container>
+        <View style={styles.loadingContainer}>
+          <Text style={[styles.loadingText, { color: colors.textPrimary }]}>
+            {t("common.loading")}
+          </Text>
+        </View>
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -140,7 +125,6 @@ const createStyles = (colors: TColors) =>
   StyleSheet.create({
     periodSelector: {
       flexDirection: "row",
-
       backgroundColor: colors.cardBackground,
       padding: 4,
       paddingHorizontal: 10,
@@ -164,5 +148,14 @@ const createStyles = (colors: TColors) =>
     cardsContainer: {
       padding: 10,
       gap: 16,
+    },
+    loadingContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    loadingText: {
+      fontSize: 16,
+      fontWeight: "500",
     },
   });

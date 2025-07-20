@@ -53,7 +53,7 @@ const HistoryContainer = ({ transactions, transfers, selectedAction }) => {
       )
     );
     setSelectedAction(filteredData as ActionFormData);
-    router.navigate(`/${record.type || "transfer"}?isEdit=true`);
+    router.navigate(`/action/${record.type || "transfer"}?isEdit=true`);
   }, []);
 
   const filteredTransactions = transactions

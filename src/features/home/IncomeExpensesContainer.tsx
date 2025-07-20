@@ -9,6 +9,7 @@ import { thisMonthIncomeExpense } from "@/src/utils/analysis";
 import useDatabase from "@/src/hooks/useDatabase";
 
 import { useRef, useState } from "react";
+import { useThisMonthAnalysis } from "@/src/hooks/useAnalysis";
 
 const IncomeExpensesContainer = ({ onSelectAction }) => {
   const { colors } = useColors();
@@ -16,8 +17,9 @@ const IncomeExpensesContainer = ({ onSelectAction }) => {
   const { t } = useTranslation();
   const drizzleDB = useDatabase();
   const [selectedAction, setSelectedAction] = useState<"income" | "expense">();
-  const { totalIncome: monthlyIncome, totalExpense: monthlyExpense } =
-    thisMonthIncomeExpense(drizzleDB);
+  const { analytics } = useThisMonthAnalysis(drizzleDB);
+  console.log("🚀 ~ IncomeExpensesContainer ~ analytics:", analytics);
+  const { totalIncome, totalExpense } = analytics;
   const indicatorPosition = useRef(new Animated.Value(0)).current;
   const indicatorColor = useRef(new Animated.Value(0)).current;
 
@@ -81,7 +83,7 @@ const IncomeExpensesContainer = ({ onSelectAction }) => {
           <View style={styles.textContainer}>
             <Text style={styles.label}>{t("transactions.income")}</Text>
             <Text style={[styles.amount, { color: colors.green }]}>
-              €{monthlyIncome}
+              €{totalIncome}
             </Text>
           </View>
         </Pressable>
@@ -106,7 +108,7 @@ const IncomeExpensesContainer = ({ onSelectAction }) => {
           <View style={styles.textContainer}>
             <Text style={styles.label}>{t("transactions.expenses")}</Text>
             <Text style={[styles.amount, { color: colors.red }]}>
-              €{monthlyExpense}
+              €{totalExpense}
             </Text>
           </View>
         </Pressable>

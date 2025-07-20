@@ -35,7 +35,7 @@ const StackLayout = () => {
                     options={{ headerShown: false }}
                   />
                   <Stack.Screen
-                    name="[action]"
+                    name="action/[action]"
                     options={{
                       headerShown: false,
                     }}
