@@ -16,6 +16,8 @@ import SwipeableItem from "@/src/components/SwipeableItem";
 import { deleteCategory } from "@/src/db/mutations/categories";
 import useColors from "@/src/stores/theme-store";
 import { useTranslation } from "react-i18next";
+import CategoriesGrid from "@/src/features/analysis/CategoriesGrid";
+import { Category } from "@/src/types/category";
 
 const Categories: FC = () => {
   const drizzleDB = useDatabase();
@@ -30,51 +32,39 @@ const Categories: FC = () => {
     categoryBottomSheetRef.current?.present();
   };
 
-  const handleCategorySelection = (category) => {
-    setSelectedCategory(category);
-    categoryBottomSheetRef.current?.present();
-  };
+  const handleCategorySelection = useCallback(
+    (category) => {
+      setSelectedCategory(category);
+      categoryBottomSheetRef.current?.present();
+    },
+    [setSelectedCategory]
+  );
 
   const handleDeleteCategory = useCallback((category) => {
     deleteCategory(drizzleDB, category);
   }, []);
+
+  const filterCategories = () => {
+    if (!categories) return [];
+    return categories.map((category) => ({
+      ...category,
+      categoryId: category.id,
+      categoryName: category.name,
+    })) as Category[];
+  };
+
   return (
     <Container>
-      <View style={{ padding: 10 }}>
-        <CardContainer
-          title={t("categories.categories")}
-          icon="add-circle-outline"
-          handleCardHeaderAction={toggleBottomSheet}
-        >
-          <GestureHandlerRootView style={{ width: "100%", paddingTop: 10 }}>
-            <FlatList
-              scrollEnabled={false}
-              data={categories}
-              renderItem={({ item }) => (
-                <SwipeableItem onRightSwipe={() => handleDeleteCategory(item)}>
-                  <View
-                    style={styles.categoryContainer}
-                    onTouchEnd={() => handleCategorySelection(item)}
-                  >
-                    <CategoryIcon category={item} />
-                    <Text style={styles.categoryName}>{item.name}</Text>
-                  </View>
-                </SwipeableItem>
-              )}
-              keyExtractor={(item) => item.id.toString()}
-              ItemSeparatorComponent={() => (
-                <View
-                  style={{
-                    height: 1,
-                    width: "100%",
-                    backgroundColor: colors.textSecondary,
-                  }}
-                />
-              )}
-            />
-          </GestureHandlerRootView>
-        </CardContainer>
+      <View style={{ padding: 10, paddingBottom: 0 }}>
+        <CardContainer title={t("categories.categories")} />
       </View>
+      <CategoriesGrid
+        categories={filterCategories()}
+        onNewCategory={toggleBottomSheet}
+        onCategoryPress={handleCategorySelection}
+        onLongPress={handleDeleteCategory}
+        isCategoryPage
+      />
       <CategoryDetails categoryBottomSheetRef={categoryBottomSheetRef} />
     </Container>
   );

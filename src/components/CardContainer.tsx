@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 interface CustomProps {
   title?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   icon?: keyof typeof Ionicons.glyphMap;
   handleCardHeaderAction?: () => void;
 }

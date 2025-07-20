@@ -29,6 +29,10 @@ const createStyles = (colors: TColors) =>
       borderRadius: 100 / 2,
       backgroundColor: "transparent",
     },
+    xs: {
+      width: 25,
+      height: 25,
+    },
     sm: {
       width: 40,
       height: 40,
