@@ -101,20 +101,20 @@ export const CategoryCard: FC<CategoryCardProps> = ({
           </View>
         </View>
 
-        {category.type === "expense" && (
+        {category.type === "expense" ? (
           <View style={styles.categoryCardPercentContainer}>
             <Text style={styles.categoryCardPercent}>
               {category.percentage || 0}%
             </Text>
           </View>
-        )}
+        ) : null}
 
         <View style={styles.infoContainer}>
-          {category.totalAmount && (
+          {category.totalAmount ? (
             <Text style={styles.categoryCardAmount}>
               {category.totalAmount}€
             </Text>
-          )}
+          ) : null}
           <Text style={styles.categoryCardLabel}>{category.categoryName}</Text>
         </View>
       </TouchableOpacity>
@@ -161,7 +161,7 @@ const createStyles = (colors: TColors) =>
       borderBottomRightRadius: 0,
       paddingVertical: 10,
       paddingHorizontal: 15,
-      width: 60,
+      width: 65,
       shadowColor: "#000",
       shadowOffset: {
         width: 0,

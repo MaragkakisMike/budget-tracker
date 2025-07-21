@@ -19,7 +19,6 @@ const Analysis: FC = () => {
   const { t } = useTranslation();
   const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>("week");
 
-  // Use the custom hook for live data
   const { analytics, categories, isLoading } = useAnalysis(
     drizzleDB,
     selectedPeriod
