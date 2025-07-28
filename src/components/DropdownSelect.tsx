@@ -19,7 +19,7 @@ type DropdownItem = {
 type DropdownSelectProps = {
   items: DropdownItem[];
   selectedValue: string | number | null;
-  onValueChange: (value: string | null) => void;
+  onValueChange: (value: string | number | null) => void;
   placeholder?: string;
   containerStyle?: object;
   disabled?: boolean;

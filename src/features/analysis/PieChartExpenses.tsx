@@ -59,7 +59,7 @@ const PieChartExpenses = ({ expenseCategories, totalExpense }) => {
   );
 
   return (
-    <View style={{ paddingTop: 10, paddingHorizontal: 10 }}>
+    <View style={{ paddingHorizontal: 10 }}>
       <CardContainer title={t("transactions.expenses")}>
         <Svg
           width={chartSize}

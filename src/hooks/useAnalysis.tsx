@@ -3,9 +3,10 @@ import {
   getTotalValues,
   getTransfers,
   getBreakdownByCategory,
-  processCategoryBreakdown,
+  processTransactionBreakdown,
   processTotalValues,
 } from "@/src/db/queries/actions";
+import { getAllTransactionYears } from "../db/queries/transactions";
 
 function getWeekRange(date: Date = new Date()) {
   const dayOfWeek = date.getDay();
@@ -36,11 +37,14 @@ function getMonthRange(date: Date = new Date()) {
   };
 }
 
-function getYearRange(date: Date = new Date()) {
-  const firstDay = new Date(date.getFullYear(), 0, 1);
+function getYearRange(year?: number) {
+  if (!year) {
+    year = new Date().getFullYear();
+  }
+  const firstDay = new Date(year, 0, 1);
   firstDay.setHours(0, 0, 0, 0);
 
-  const lastDay = new Date(date.getFullYear(), 11, 31);
+  const lastDay = new Date(year, 11, 31);
   lastDay.setHours(23, 59, 59, 999);
 
   return {
@@ -51,7 +55,12 @@ function getYearRange(date: Date = new Date()) {
 
 type TimePeriod = "week" | "month" | "year";
 
-export const useAnalysis = (drizzleDB: any, period: TimePeriod) => {
+export const useAnalysis = (
+  drizzleDB: any,
+  data: { year?: number; period?: TimePeriod; includeAllYears?: boolean }
+) => {
+  const { year, period, includeAllYears } = data;
+
   const getDateRange = () => {
     switch (period) {
       case "week":
@@ -65,46 +74,58 @@ export const useAnalysis = (drizzleDB: any, period: TimePeriod) => {
     }
   };
 
-  const { startDate, endDate } = getDateRange();
+  const { startDate, endDate } = getYearRange(year);
 
   const totalsQuery = getTotalValues(drizzleDB, startDate, endDate);
   const transfersQuery = getTransfers(drizzleDB, startDate, endDate);
   const breakdownQuery = getBreakdownByCategory(drizzleDB, startDate, endDate);
 
-  const { data: rawTotals } = useLiveQuery(totalsQuery, [
-    startDate,
-    endDate,
-    period,
-  ]);
+  const { data: rawTotals } = useLiveQuery(totalsQuery, [startDate, endDate]);
   const { data: rawTransfers } = useLiveQuery(transfersQuery, [
     startDate,
     endDate,
-    period,
   ]);
   const { data: rawBreakdown } = useLiveQuery(breakdownQuery, [
     startDate,
     endDate,
-    period,
   ]);
 
   const analytics = processTotalValues(rawTotals || [], rawTransfers || []);
-  const categories = processCategoryBreakdown(rawBreakdown || []);
+  const transactions = processTransactionBreakdown(rawBreakdown || []);
+  let availableYears: Array<number> = [];
+
+  if (includeAllYears) {
+    const yearsResult = useLiveQuery(getAllTransactionYears(drizzleDB), []);
+    const rawYears = includeAllYears ? yearsResult.data : null;
+
+    availableYears = rawYears
+      ? rawYears
+          .map((transaction) => new Date(transaction.date).getFullYear())
+          .filter((year, index, self) => self.indexOf(year) === index)
+          .sort((a, b) => a - b)
+      : [];
+  }
 
   return {
     analytics,
-    categories,
-    isLoading: !rawTotals || !rawTransfers || !rawBreakdown,
+    transactions,
+    availableYears,
+    isLoading:
+      !rawTotals ||
+      !rawTransfers ||
+      !rawBreakdown ||
+      (includeAllYears && !availableYears.length),
   };
 };
 
 export const useThisWeekAnalysis = (drizzleDB: any) => {
-  return useAnalysis(drizzleDB, "week");
+  return useAnalysis(drizzleDB, { period: "week" });
 };
 
 export const useThisMonthAnalysis = (drizzleDB: any) => {
-  return useAnalysis(drizzleDB, "month");
+  return useAnalysis(drizzleDB, { period: "month" });
 };
 
 export const useThisYearAnalysis = (drizzleDB: any) => {
-  return useAnalysis(drizzleDB, "year");
+  return useAnalysis(drizzleDB, { period: "year" });
 };

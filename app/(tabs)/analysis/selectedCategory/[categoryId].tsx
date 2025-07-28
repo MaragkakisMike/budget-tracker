@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useMemo } from "react";
 import Container from "@/src/components/Container";
 import { useLocalSearchParams } from "expo-router";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import useDatabase from "@/src/hooks/useDatabase";
 import { getExpensesByCategory } from "@/src/db/queries/actions";
+import HistoryContainer from "@/src/features/home/historyContainer";
 
 const SelectedCategory = () => {
   const { categoryId } = useLocalSearchParams();
@@ -13,11 +14,35 @@ const SelectedCategory = () => {
     getExpensesByCategory(drizzleDB, parseInt(categoryId as string))
   );
 
+  const formatedExpenses = useMemo(() => {
+    return expenses.map((expense) => ({
+      ...expense,
+      account: {
+        id: expense.accountId,
+        name: expense.accountName,
+      },
+      category: {
+        id: expense.categoryId,
+        name: expense.categoryName,
+        icon: expense.categoryIcon,
+        color: expense.categoryColor,
+      },
+    }));
+  }, [expenses]);
+
   return (
     <Container>
-      <View>
-        <Text>SelectedCategory</Text>
-        <Text>Category ID: {categoryId}</Text>
+      <View
+        style={{
+          paddingHorizontal: 10,
+          gap: 10,
+        }}
+      >
+        <HistoryContainer
+          transactions={formatedExpenses}
+          transfers={[]}
+          selectedAction={"expense"}
+        />
       </View>
     </Container>
   );

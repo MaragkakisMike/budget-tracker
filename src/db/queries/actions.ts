@@ -105,6 +105,9 @@ export const getExpensesByCategory = (
       amount: transactions.amount,
       date: transactions.date,
       type: transactions.type,
+      title: transactions.title,
+      accountId: transactions.accountId,
+      accountName: transactions.accountName,
       categoryId: transactions.categoryId,
       categoryName: categories.name,
       categoryColor: categories.color,
@@ -136,79 +139,49 @@ export const getTransactions = (drizzleDB: any) => {
   return drizzleDB.select().from(transactions).orderBy(desc(transactions.date));
 };
 
-export const processCategoryBreakdown = (categoryBreakdown: any[]) => {
-  if (!categoryBreakdown || categoryBreakdown.length === 0) {
+export const processTransactionBreakdown = (transactions: any[]) => {
+  if (!transactions || transactions.length === 0) {
     return {
-      incomeCategories: [],
-      expenseCategories: [],
+      incomeTransactions: [],
+      expenseTransactions: [],
     };
   }
 
-  const incomeCategories = categoryBreakdown.filter((c) => c.type === "income");
-  const expenseCategories = categoryBreakdown.filter(
-    (c) => c.type === "expense"
-  );
+  const incomeTransactions = transactions.filter((t) => t.type === "income");
+  const expenseTransactions = transactions.filter((t) => t.type === "expense");
 
-  const totalIncomeAmount = incomeCategories.reduce(
-    (sum, category) => sum + category.totalAmount,
+  const totalIncomeAmount = incomeTransactions.reduce(
+    (sum, transaction) => sum + transaction.amount,
     0
   );
-  const totalExpenseAmount = expenseCategories.reduce(
-    (sum, category) => sum + category.totalAmount,
+  const totalExpenseAmount = expenseTransactions.reduce(
+    (sum, transaction) => sum + transaction.amount,
     0
   );
 
-  const incomeCategoriesWithPercentage = incomeCategories.map((category) => ({
-    ...category,
-    percentage:
-      totalIncomeAmount > 0
-        ? Math.round((category.totalAmount / totalIncomeAmount) * 100)
-        : 0,
-  }));
+  const incomeTransactionsWithPercentage = incomeTransactions.map(
+    (transaction) => ({
+      ...transaction,
+      percentage:
+        totalIncomeAmount > 0
+          ? Math.round((transaction.amount / totalIncomeAmount) * 100)
+          : 0,
+    })
+  );
 
-  const expenseCategoriesWithPercentage = expenseCategories.map((category) => ({
-    ...category,
-    percentage:
-      totalExpenseAmount > 0
-        ? Math.round((category.totalAmount / totalExpenseAmount) * 100)
-        : 0,
-  }));
-
-  return {
-    incomeCategories: incomeCategoriesWithPercentage,
-    expenseCategories: expenseCategoriesWithPercentage,
-  };
-};
-
-export const processExpensesByCategory = (
-  expenses: any[],
-  categoryId: number
-) => {
-  if (!expenses || expenses.length === 0) {
-    return {
-      expenses: [],
-      totalAmount: 0,
-      categoryId,
-      categoryName: null,
-      categoryColor: null,
-      categoryIcon: null,
-      count: 0,
-    };
-  }
-
-  const totalAmount = expenses.reduce(
-    (sum, expense) => sum + expense.amount,
-    0
+  const expenseTransactionsWithPercentage = expenseTransactions.map(
+    (transaction) => ({
+      ...transaction,
+      percentage:
+        totalExpenseAmount > 0
+          ? Math.round((transaction.amount / totalExpenseAmount) * 100)
+          : 0,
+    })
   );
 
   return {
-    expenses,
-    totalAmount,
-    categoryId,
-    categoryName: expenses[0]?.categoryName || null,
-    categoryColor: expenses[0]?.categoryColor || null,
-    categoryIcon: expenses[0]?.categoryIcon || null,
-    count: expenses.length,
+    incomeTransactions: incomeTransactionsWithPercentage,
+    expenseTransactions: expenseTransactionsWithPercentage,
   };
 };
 

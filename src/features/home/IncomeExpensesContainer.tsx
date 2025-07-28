@@ -18,7 +18,6 @@ const IncomeExpensesContainer = ({ onSelectAction }) => {
   const drizzleDB = useDatabase();
   const [selectedAction, setSelectedAction] = useState<"income" | "expense">();
   const { analytics } = useThisMonthAnalysis(drizzleDB);
-  console.log("🚀 ~ IncomeExpensesContainer ~ analytics:", analytics);
   const { totalIncome, totalExpense } = analytics;
   const indicatorPosition = useRef(new Animated.Value(0)).current;
   const indicatorColor = useRef(new Animated.Value(0)).current;

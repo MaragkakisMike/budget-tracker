@@ -36,6 +36,7 @@ const Colors: ColorPalettes = {
     modalShadow: "rgba(0, 0, 0, 0.85)",
     trackOffColor: "#39393D",
     sectionBackground: "#242731",
+    border: "#3B3F48",
     ...sharedColors,
   },
   light: {
@@ -49,6 +50,7 @@ const Colors: ColorPalettes = {
     modalShadow: "rgba(0, 0, 0, 0.2)",
     trackOffColor: "#E9E9EA",
     sectionBackground: "#FFFFFF",
+    border: "#D1D5DB",
     ...sharedColors,
   },
 };
