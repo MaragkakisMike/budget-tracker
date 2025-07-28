@@ -11,6 +11,12 @@ import {
   TextStyle,
 } from "react-native";
 import useStyles from "@/src/hooks/useStyles";
+import {
+  DEFAULT_MARGIN,
+  DEFAULT_PADDING,
+  EXTRA_SMALL_MARGIN,
+  MEDIUM_MARGIN,
+} from "../constants";
 
 interface SettingItemProps extends Omit<PressableProps, "style"> {
   title: string;
@@ -69,8 +75,8 @@ const createStyles = (colors: any) =>
       width: "100%",
     },
     pressable: {
-      paddingVertical: 16,
-      paddingHorizontal: 16,
+      paddingVertical: DEFAULT_PADDING,
+      paddingHorizontal: DEFAULT_PADDING,
     },
     pressablePressed: {
       opacity: 0.7,
@@ -80,7 +86,7 @@ const createStyles = (colors: any) =>
       alignItems: "center",
     },
     leftIconContainer: {
-      marginRight: 16,
+      marginRight: DEFAULT_MARGIN,
     },
     textContainer: {
       flex: 1,
@@ -93,16 +99,16 @@ const createStyles = (colors: any) =>
     subtitle: {
       fontSize: 14,
       color: colors.textSecondary,
-      marginTop: 4,
+      marginTop: EXTRA_SMALL_MARGIN,
     },
     rightElementContainer: {
-      marginLeft: 12,
+      marginLeft: MEDIUM_MARGIN,
     },
     divider: {
       height: StyleSheet.hairlineWidth,
       backgroundColor: colors.divider || colors.border || "#E0E0E0",
       opacity: 0.5,
-      marginLeft: 16,
+      marginLeft: DEFAULT_MARGIN,
     },
   });
 

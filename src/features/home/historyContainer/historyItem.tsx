@@ -7,6 +7,11 @@ import { CategoryIcon } from "@/src/components/CategoryIcon";
 import { useTranslation } from "react-i18next";
 import useColors from "@/src/stores/theme-store";
 import { HistoryRecord } from "@/src/interfaces";
+import {
+  EXTRA_SMALL_MARGIN,
+  MEDIUM_MARGIN,
+  SMALL_PADDING,
+} from "@/src/constants";
 type FontAwsome5Type = keyof typeof FontAwesome5.glyphMap;
 
 export const HistoryItem = ({ record }: { record: HistoryRecord }) => {
@@ -32,7 +37,7 @@ export const HistoryItem = ({ record }: { record: HistoryRecord }) => {
         />
         <View style={styles.detailsContainer}>
           <Text style={[styles.categoryText]}>{record.title}</Text>
-          <View style={{ flexDirection: "row", gap: 3 }}>
+          <View style={{ flexDirection: "row", gap: 4 }}>
             <Text style={styles.dateText}>
               {format(new Date(record.date), "MMM d")} |
             </Text>
@@ -123,16 +128,16 @@ const createStyles = (colors: TColors) =>
       flexDirection: "row",
       alignItems: "center",
       width: "100%",
-      paddingVertical: 8,
+      paddingVertical: SMALL_PADDING,
       backgroundColor: colors.containerBackground,
       borderRadius: 10,
     },
     detailsContainer: {
-      marginLeft: 12,
+      marginLeft: MEDIUM_MARGIN,
     },
     categoryText: {
       fontSize: 12,
-      marginBottom: 2,
+      marginBottom: EXTRA_SMALL_MARGIN,
       color: colors.textPrimary,
     },
     titleText: {
@@ -143,7 +148,7 @@ const createStyles = (colors: TColors) =>
     dateText: {
       fontSize: 10,
       color: colors.textSecondary,
-      marginTop: 2,
+      marginTop: EXTRA_SMALL_MARGIN,
     },
     textDeleted: {
       textDecorationLine: "line-through",

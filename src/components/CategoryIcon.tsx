@@ -4,6 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { TColors } from "../styles/colors";
 import useStyles from "../hooks/useStyles";
+import { EXTRA_SMALL_MARGIN } from "../constants";
 
 export const CategoryIcon = ({ category, size = "sm" }) => {
   const { styles } = useStyles(createStyles);
@@ -25,7 +26,7 @@ const createStyles = (colors: TColors) =>
     iconContainer: {
       justifyContent: "center",
       alignItems: "center",
-      margin: 2,
+      margin: EXTRA_SMALL_MARGIN,
       borderRadius: 100 / 2,
       backgroundColor: "transparent",
     },

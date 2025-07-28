@@ -4,6 +4,7 @@ import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
 import useColors from "@/src/stores/theme-store";
 import { Ionicons } from "@expo/vector-icons";
+import { LARGE_PADDING, DEFAULT_PADDING } from "../constants";
 
 interface CustomProps {
   title?: string;
@@ -42,8 +43,8 @@ const createStyles = (colors: TColors) =>
     cardContainer: {
       backgroundColor: colors.containerBackground,
       borderRadius: 16,
-      padding: 20,
-      paddingTop: 10,
+      padding: LARGE_PADDING,
+      paddingTop: DEFAULT_PADDING,
       shadowColor: colors.black,
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.25,

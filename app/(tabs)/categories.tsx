@@ -18,6 +18,7 @@ import useColors from "@/src/stores/theme-store";
 import { useTranslation } from "react-i18next";
 import CategoriesGrid from "@/src/features/analysis/CategoriesGrid";
 import { Category } from "@/src/types/category";
+import { DEFAULT_GAP, DEFAULT_PADDING, MEDIUM_PADDING } from "@/src/constants";
 
 const Categories: FC = () => {
   const drizzleDB = useDatabase();
@@ -55,7 +56,7 @@ const Categories: FC = () => {
 
   return (
     <Container>
-      <View style={{ padding: 10, paddingBottom: 0 }}>
+      <View style={{ padding: MEDIUM_PADDING, paddingBottom: 0 }}>
         <CardContainer title={t("categories.categories")} />
       </View>
       <CategoriesGrid
@@ -77,12 +78,12 @@ const createStyles = (colors: TColors) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "flex-start",
-      padding: 10,
+      padding: MEDIUM_PADDING,
       backgroundColor: colors.containerBackground,
       // borderBottomWidth: 1,
       // borderBottomColor: "#f0f0f0",
       borderRadius: 10,
-      gap: 16,
+      gap: DEFAULT_GAP,
     },
     categoryName: {
       fontSize: 16,

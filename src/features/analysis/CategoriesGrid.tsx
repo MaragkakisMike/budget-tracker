@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import CategoryCard from "./CategoryCard";
 import { useRouter } from "expo-router";
 import useColors from "@/src/stores/theme-store";
+import { DEFAULT_GAP, MEDIUM_PADDING } from "@/src/constants";
 
 type Props = {
   categories: Category[];
@@ -52,12 +53,12 @@ export default CategoriesGrid;
 
 const styles = StyleSheet.create({
   cardsContainer: {
-    padding: 10,
+    padding: MEDIUM_PADDING,
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 16,
+    gap: DEFAULT_GAP,
   },
   columnWrapper: {
-    gap: 16,
+    gap: DEFAULT_GAP,
   },
 });

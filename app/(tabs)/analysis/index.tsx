@@ -8,6 +8,7 @@ import useColors from "@/src/stores/theme-store";
 import { useTranslation } from "react-i18next";
 import ContentDividerLoadmoreButton from "@/src/components/ContentDeviderShowHistoryButton";
 import { YearSelector } from "@/src/features/analysis/YearSelector";
+import { DEFAULT_GAP, DEFAULT_PADDING } from "@/src/constants";
 
 type TimePeriod = "week" | "month" | "year";
 
@@ -77,8 +78,8 @@ export default Analysis;
 
 const styles = StyleSheet.create({
   cardsContainer: {
-    padding: 10,
-    gap: 16,
+    padding: DEFAULT_PADDING,
+    gap: DEFAULT_GAP,
   },
   loadingContainer: {
     flex: 1,

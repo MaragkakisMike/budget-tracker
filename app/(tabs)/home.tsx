@@ -8,6 +8,7 @@ import useDatabase from "@/src/hooks/useDatabase";
 import { getTransactions } from "@/src/db/queries/transactions";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import { useTransactions } from "@/src/hooks/useTransactions";
+import { DEFAULT_GAP, DEFAULT_PADDING, MEDIUM_PADDING } from "@/src/constants";
 
 export default function HomePage() {
   const [selectedAction, setSelectedAction] = useState<"income" | "expense">();
@@ -23,8 +24,8 @@ export default function HomePage() {
       <AccountsContainer />
       <View
         style={{
-          paddingHorizontal: 10,
-          gap: 10,
+          paddingHorizontal: MEDIUM_PADDING,
+          gap: DEFAULT_GAP,
         }}
       >
         <IncomeExpensesContainer onSelectAction={handleSelectAction} />

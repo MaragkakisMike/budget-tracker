@@ -10,6 +10,12 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import useColors from "@/src/stores/theme-store";
+import {
+  LARGE_PADDING,
+  DEFAULT_PADDING,
+  MEDIUM_PADDING,
+  SMALL_PADDING,
+} from "../constants";
 
 type DropdownItem = {
   label: string;
@@ -147,8 +153,8 @@ const createStyles = (colors) =>
       borderColor: colors.textPrimary,
       borderRadius: 8,
       borderWidth: 1,
-      paddingHorizontal: 12,
-      paddingVertical: 12,
+      paddingHorizontal: MEDIUM_PADDING,
+      paddingVertical: MEDIUM_PADDING,
     },
     disabledButton: {
       backgroundColor: colors.disabledBackground,
@@ -167,7 +173,7 @@ const createStyles = (colors) =>
       backgroundColor: "rgba(0, 0, 0, 0.5)",
       justifyContent: "center",
       alignItems: "center",
-      padding: 20,
+      padding: LARGE_PADDING,
     },
     modalContent: {
       backgroundColor: colors.background,
@@ -184,7 +190,7 @@ const createStyles = (colors) =>
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: 16,
+      padding: DEFAULT_PADDING,
       borderBottomWidth: 1,
       borderBottomColor: colors.border,
     },
@@ -194,14 +200,14 @@ const createStyles = (colors) =>
       color: colors.textPrimary,
     },
     optionsList: {
-      paddingVertical: 8,
+      paddingVertical: SMALL_PADDING,
     },
     optionItem: {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      paddingVertical: 12,
-      paddingHorizontal: 16,
+      paddingVertical: MEDIUM_PADDING,
+      paddingHorizontal: DEFAULT_PADDING,
       borderBottomWidth: 1,
       borderBottomColor: colors.border,
     },

@@ -8,6 +8,7 @@ import {
 import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
 import useColors from "@/src/stores/theme-store";
+import { LARGE_MARGIN, LARGE_PADDING } from "../constants";
 
 export const BottomSheet = ({ bottomSheetModalRef, title, ...props }) => {
   const { styles } = useStyles(createStyles);
@@ -58,14 +59,14 @@ const createStyles = (colors: TColors) =>
     },
     contentContainer: {
       // flex: 1,
-      paddingHorizontal: 20,
-      paddingBottom: 20,
+      paddingHorizontal: LARGE_PADDING,
+      paddingBottom: LARGE_PADDING,
     },
     title: {
       fontSize: 22,
       fontWeight: "700",
       textAlign: "center",
-      marginBottom: 20,
+      marginBottom: LARGE_MARGIN,
       color: colors.textPrimary,
     },
   });

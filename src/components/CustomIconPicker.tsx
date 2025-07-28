@@ -14,6 +14,13 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import useColors from "../stores/theme-store";
 import { TColors } from "../styles/colors";
 import useStyles from "../hooks/useStyles";
+import {
+  LARGE_PADDING,
+  DEFAULT_PADDING,
+  MEDIUM_PADDING,
+  SMALL_PADDING,
+  EXTRA_SMALL_MARGIN,
+} from "../constants";
 
 const { width } = Dimensions.get("window");
 
@@ -124,7 +131,7 @@ const createStyles = (colors: TColors) =>
       backgroundColor: colors.modalShadow,
       justifyContent: "center",
       alignItems: "center",
-      padding: 20,
+      padding: LARGE_PADDING,
     },
     pickerContainer: {
       width: "90%",
@@ -145,7 +152,7 @@ const createStyles = (colors: TColors) =>
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: 16,
+      padding: DEFAULT_PADDING,
       borderBottomWidth: 1,
       borderBottomColor: "#EEEEEE",
       backgroundColor: colors.containerBackground,
@@ -156,13 +163,13 @@ const createStyles = (colors: TColors) =>
       color: colors.textPrimary,
     },
     closeButton: {
-      padding: 4,
+      padding: SMALL_PADDING,
     },
     scrollViewContent: {
       flexGrow: 1,
     },
     iconsContainer: {
-      padding: 12,
+      padding: MEDIUM_PADDING,
     },
     iconsGrid: {
       flexDirection: "row",
@@ -175,12 +182,12 @@ const createStyles = (colors: TColors) =>
       height: 50,
       justifyContent: "center",
       alignItems: "center",
-      margin: 4,
+      margin: EXTRA_SMALL_MARGIN,
       borderRadius: 100 / 2,
       backgroundColor: "transparent",
     },
     iconWrapper: {
-      padding: 8,
+      padding: SMALL_PADDING,
       borderRadius: 8,
     },
     selectedIcon: {

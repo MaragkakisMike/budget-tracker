@@ -1,4 +1,13 @@
 import { CategoryIcon } from "@/src/components/CategoryIcon";
+import {
+  LARGE_PADDING,
+  DEFAULT_PADDING,
+  MEDIUM_PADDING,
+  DEFAULT_GAP,
+  EXTRA_SMALL_MARGIN,
+  SMALL_GAP,
+  SMALL_PADDING,
+} from "@/src/constants";
 import useStyles from "@/src/hooks/useStyles";
 import { TColors } from "@/src/styles/colors";
 import { Category } from "@/src/types/category";
@@ -34,8 +43,9 @@ export const CategoryCard: FC<CategoryCardProps> = ({
         style={[
           styles.categoryCard,
           {
+            paddingTop: SMALL_PADDING,
             justifyContent: "center",
-            gap: 10,
+            gap: SMALL_GAP,
           },
         ]}
         onPress={onPress}
@@ -136,7 +146,7 @@ const createStyles = (colors: TColors) =>
       shadowRadius: 9,
       elevation: 5, // for Android
       // paddingVertical: 24,
-      // paddingHorizontal: 20,
+      // paddingHorizontal: LARGE_PADDING,
       width: cardWidth, // Fixed width instead of flex: 1
       minHeight: 110,
       position: "relative",
@@ -150,7 +160,7 @@ const createStyles = (colors: TColors) =>
       alignItems: "center",
       justifyContent: "center",
       borderRadius: 50,
-      padding: 10,
+      padding: MEDIUM_PADDING,
     },
     categoryCardPercentContainer: {
       position: "absolute",
@@ -159,8 +169,8 @@ const createStyles = (colors: TColors) =>
       backgroundColor: colors.primaryLight,
       borderRadius: 32,
       borderBottomRightRadius: 0,
-      paddingVertical: 10,
-      paddingHorizontal: 15,
+      paddingVertical: MEDIUM_PADDING,
+      paddingHorizontal: DEFAULT_PADDING,
       width: 65,
       shadowColor: "#000",
       shadowOffset: {
@@ -178,14 +188,14 @@ const createStyles = (colors: TColors) =>
       textAlign: "center",
     },
     infoContainer: {
-      paddingHorizontal: 20,
-      paddingBottom: 10,
+      paddingHorizontal: LARGE_PADDING,
+      paddingBottom: MEDIUM_PADDING,
     },
     categoryCardAmount: {
       fontSize: 24,
       fontWeight: "700",
       color: colors.textPrimary,
-      marginBottom: 2,
+      marginBottom: EXTRA_SMALL_MARGIN,
     },
     categoryCardLabel: {
       color: colors.textSecondary,

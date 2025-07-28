@@ -17,6 +17,13 @@ import { ActionFormData } from "@/src/types/actions";
 import { HistoryRecord } from "@/src/interfaces";
 import useActionStore from "@/src/stores/actions-store";
 import { useRouter } from "expo-router";
+import {
+  DEFAULT_GAP,
+  EXTRA_SMALL_MARGIN,
+  LARGE_PADDING,
+  MEDIUM_MARGIN,
+  SMALL_PADDING,
+} from "@/src/constants";
 type FontAwsome5Type = keyof typeof FontAwesome5.glyphMap;
 
 const HistoryContainer = ({ transactions, transfers, selectedAction }) => {
@@ -134,22 +141,22 @@ const createStyles = (colors: TColors) =>
   StyleSheet.create({
     historyContainer: {
       width: "100%",
-      gap: 10,
+      gap: DEFAULT_GAP,
     },
     itemContainer: {
       flexDirection: "row",
       alignItems: "center",
       width: "100%",
-      paddingVertical: 8,
+      paddingVertical: SMALL_PADDING,
       backgroundColor: colors.containerBackground,
       borderRadius: 10,
     },
     detailsContainer: {
-      marginLeft: 12,
+      marginLeft: MEDIUM_MARGIN,
     },
     categoryText: {
       fontSize: 12,
-      marginBottom: 2,
+      marginBottom: EXTRA_SMALL_MARGIN,
     },
     titleText: {
       fontSize: 14,
@@ -159,7 +166,7 @@ const createStyles = (colors: TColors) =>
     dateText: {
       fontSize: 10,
       color: colors.textSecondary,
-      marginTop: 2,
+      marginTop: EXTRA_SMALL_MARGIN,
     },
     amountText: {
       fontSize: 14,
@@ -175,6 +182,6 @@ const createStyles = (colors: TColors) =>
     noDataText: {
       textAlign: "center",
       color: colors.textSecondary,
-      padding: 20,
+      padding: LARGE_PADDING,
     },
   });

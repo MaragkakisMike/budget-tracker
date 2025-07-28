@@ -6,6 +6,7 @@ import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import useDatabase from "@/src/hooks/useDatabase";
 import { getExpensesByCategory } from "@/src/db/queries/actions";
 import HistoryContainer from "@/src/features/home/historyContainer";
+import { DEFAULT_GAP, DEFAULT_PADDING } from "@/src/constants";
 
 const SelectedCategory = () => {
   const { categoryId } = useLocalSearchParams();
@@ -34,8 +35,8 @@ const SelectedCategory = () => {
     <Container>
       <View
         style={{
-          paddingHorizontal: 10,
-          gap: 10,
+          paddingHorizontal: DEFAULT_PADDING,
+          gap: DEFAULT_GAP,
         }}
       >
         <HistoryContainer

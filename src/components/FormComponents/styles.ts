@@ -1,12 +1,20 @@
+import {
+  DEFAULT_MARGIN,
+  EXTRA_SMALL_MARGIN,
+  MEDIUM_PADDING,
+  SMALL_GAP,
+  SMALL_MARGIN,
+  SMALL_PADDING,
+} from "@/src/constants";
 import { TColors } from "@/src/styles/colors";
 import { StyleSheet } from "react-native";
 export const createStyles = (colors: TColors) =>
   StyleSheet.create({
     inputContainer: {
-      marginBottom: 16,
+      marginBottom: DEFAULT_MARGIN,
     },
     inputLabel: {
-      marginBottom: 8,
+      marginBottom: SMALL_MARGIN,
       fontSize: 14,
       fontWeight: "500",
       color: colors.textPrimary,
@@ -16,8 +24,8 @@ export const createStyles = (colors: TColors) =>
       borderWidth: 1,
       borderColor: colors.textPrimary,
       borderRadius: 8,
-      paddingHorizontal: 12,
-      paddingVertical: 10,
+      paddingHorizontal: MEDIUM_PADDING,
+      paddingVertical: MEDIUM_PADDING,
       fontSize: 16,
       color: colors.textPrimary,
     },
@@ -27,7 +35,7 @@ export const createStyles = (colors: TColors) =>
     errorText: {
       color: colors.red,
       fontSize: 12,
-      marginTop: 4,
+      marginTop: EXTRA_SMALL_MARGIN,
     },
     datePickerButton: {
       flexDirection: "row",
@@ -37,8 +45,8 @@ export const createStyles = (colors: TColors) =>
       borderWidth: 1,
       borderColor: colors.textPrimary,
       borderRadius: 8,
-      paddingHorizontal: 12,
-      paddingVertical: 10,
+      paddingHorizontal: MEDIUM_PADDING,
+      paddingVertical: MEDIUM_PADDING,
       height: 48,
     },
     dateText: {
@@ -48,16 +56,16 @@ export const createStyles = (colors: TColors) =>
     chipsContainer: {
       flexDirection: "row",
       flexWrap: "wrap",
-      gap: 8,
-      marginTop: 8,
+      gap: SMALL_GAP,
+      marginTop: SMALL_MARGIN,
     },
     chip: {
-      paddingHorizontal: 12,
-      paddingVertical: 8,
+      paddingHorizontal: MEDIUM_PADDING,
+      paddingVertical: SMALL_PADDING,
       borderRadius: 16,
       borderWidth: 2,
-      marginRight: 8,
-      marginBottom: 8,
+      marginRight: SMALL_MARGIN,
+      marginBottom: SMALL_MARGIN,
     },
     chipText: {
       fontSize: 14,

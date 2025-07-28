@@ -1,4 +1,20 @@
+export const SMALL_PADDING = 8;
+export const MEDIUM_PADDING = 12;
 export const DEFAULT_PADDING = 16;
+export const LARGE_PADDING = 24;
+
+export const EXTRA_SMALL_MARGIN = 4;
+export const SMALL_MARGIN = 8;
+export const MEDIUM_MARGIN = 12;
+export const DEFAULT_MARGIN = 16;
+export const LARGE_MARGIN = 24;
+export const EXTRA_LARGE_MARGIN = 32;
+
+export const SMALL_GAP = 8;
+export const DEFAULT_GAP = 16;
+export const LARGE_GAP = 24;
+export const EXTRA_LARGE_GAP = 32;
+
 export const VERSION = "1.0.0";
 
 export const categoryIcons = [

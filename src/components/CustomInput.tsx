@@ -11,6 +11,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import useColors from "@/src/stores/theme-store";
 import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
+import { DEFAULT_MARGIN, MEDIUM_MARGIN } from "../constants";
 
 export interface CustomInputProps extends Omit<TextInputProps, "style"> {
   icon?: keyof typeof FontAwesome5.glyphMap;
@@ -59,7 +60,7 @@ const createStyles = (colors: TColors) =>
       flexDirection: "row",
       alignItems: "center",
       borderRadius: 12,
-      marginBottom: 15,
+      marginBottom: DEFAULT_MARGIN,
       shadowColor: colors.textPrimary,
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.1,
@@ -74,8 +75,8 @@ const createStyles = (colors: TColors) =>
       color: colors.textPrimary,
     },
     icon: {
-      marginLeft: 15,
-      marginRight: 10,
+      marginLeft: DEFAULT_MARGIN,
+      marginRight: MEDIUM_MARGIN,
     },
   });
 

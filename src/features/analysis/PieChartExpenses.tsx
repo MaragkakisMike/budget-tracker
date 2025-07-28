@@ -15,6 +15,7 @@ import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
 import { useTranslation } from "react-i18next";
 import { Category } from "@/src/db/schema";
+import { DEFAULT_MARGIN, MEDIUM_PADDING, SMALL_MARGIN } from "@/src/constants";
 
 const PieChartExpenses = ({ expenseCategories, totalExpense }) => {
   const { colors } = useColors();
@@ -59,7 +60,7 @@ const PieChartExpenses = ({ expenseCategories, totalExpense }) => {
   );
 
   return (
-    <View style={{ paddingHorizontal: 10 }}>
+    <View style={{ paddingHorizontal: MEDIUM_PADDING }}>
       <CardContainer title={t("transactions.expenses")}>
         <Svg
           width={chartSize}
@@ -200,19 +201,19 @@ const createStyles = (colors: TColors) =>
       alignItems: "center",
     },
     legendScrollView: {
-      marginTop: 16,
+      marginTop: DEFAULT_MARGIN,
       maxWidth: "100%",
     },
     legendItem: {
       flexDirection: "row",
       alignItems: "center",
-      marginRight: 16,
+      marginRight: DEFAULT_MARGIN,
     },
     legendColorCircle: {
       width: 16,
       height: 16,
       borderRadius: 8,
-      marginRight: 8,
+      marginRight: SMALL_MARGIN,
     },
     legendText: {
       fontSize: 14,

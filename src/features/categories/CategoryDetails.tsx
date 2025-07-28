@@ -10,7 +10,12 @@ import { Button } from "@/src/components/Button";
 import useDatabase from "@/src/hooks/useDatabase";
 import { createCategory, updateCategory } from "@/src/db/mutations/categories";
 import { useCategories } from "@/src/contexts/categories-context";
-import { categoryIcons } from "@/src/constants";
+import {
+  DEFAULT_GAP,
+  EXTRA_SMALL_MARGIN,
+  LARGE_GAP,
+  categoryIcons,
+} from "@/src/constants";
 import { useTranslation } from "react-i18next";
 
 export const CategoryDetails = ({ categoryBottomSheetRef }) => {
@@ -156,14 +161,14 @@ const createStyles = (colors: TColors) =>
       //   height: 350,
       width: "100%",
       alignItems: "center",
-      gap: 20,
+      gap: LARGE_GAP,
     },
     topContainer: {
       flexDirection: "row",
       width: "100%",
       alignItems: "center",
       justifyContent: "center",
-      gap: 15,
+      gap: DEFAULT_GAP,
     },
     circle: {
       width: 24,
@@ -180,7 +185,7 @@ const createStyles = (colors: TColors) =>
       height: 40,
       justifyContent: "center",
       alignItems: "center",
-      margin: 2,
+      margin: EXTRA_SMALL_MARGIN,
       borderRadius: 20,
       backgroundColor: "transparent",
     },

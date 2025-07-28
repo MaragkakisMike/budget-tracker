@@ -1,13 +1,23 @@
 import { StyleSheet } from "react-native";
 import { TColors } from "@/src/styles/colors";
+import {
+  DEFAULT_MARGIN,
+  DEFAULT_PADDING,
+  EXTRA_LARGE_GAP,
+  EXTRA_SMALL_MARGIN,
+  MEDIUM_MARGIN,
+  MEDIUM_PADDING,
+  SMALL_MARGIN,
+  SMALL_PADDING,
+} from "@/src/constants";
 
 export const createStyles = (colors: TColors) =>
   StyleSheet.create({
     formContainer: {
       flex: 1,
       width: "100%",
-      paddingHorizontal: 16,
-      paddingVertical: 12,
+      paddingHorizontal: DEFAULT_PADDING,
+      paddingVertical: MEDIUM_PADDING,
     },
     formScrollView: {
       flex: 1,
@@ -17,33 +27,33 @@ export const createStyles = (colors: TColors) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      marginBottom: 16,
+      marginBottom: DEFAULT_MARGIN,
     },
     formTitle: {
       fontSize: 20,
       fontWeight: "600",
       color: colors.textPrimary,
       flex: 1,
-      marginLeft: 12,
+      marginLeft: MEDIUM_MARGIN,
     },
     closeButton: {
-      padding: 4,
+      padding: SMALL_PADDING,
     },
     inputContainer: {
-      marginBottom: 16,
+      marginBottom: DEFAULT_MARGIN,
     },
     inputLabel: {
       fontSize: 14,
       fontWeight: "500",
       color: colors.textPrimary,
-      marginBottom: 6,
+      marginBottom: SMALL_MARGIN,
     },
     input: {
       backgroundColor: colors.containerBackground,
       borderRadius: 8,
       borderWidth: 1,
       borderColor: colors.textPrimary,
-      padding: 12,
+      padding: MEDIUM_PADDING,
       fontSize: 16,
       color: colors.textPrimary,
     },
@@ -61,7 +71,7 @@ export const createStyles = (colors: TColors) =>
       borderRadius: 8,
       borderWidth: 1,
       borderColor: colors.textPrimary,
-      padding: 12,
+      padding: MEDIUM_PADDING,
     },
     dateText: {
       fontSize: 16,
@@ -70,15 +80,15 @@ export const createStyles = (colors: TColors) =>
     buttonContainer: {
       flexDirection: "row",
       justifyContent: "space-between",
-      marginTop: 16,
+      marginTop: DEFAULT_MARGIN,
     },
     button: {
       flex: 1,
-      paddingVertical: 12,
+      paddingVertical: MEDIUM_PADDING,
       borderRadius: 8,
       alignItems: "center",
       justifyContent: "center",
-      marginHorizontal: 4,
+      marginHorizontal: EXTRA_SMALL_MARGIN,
     },
     cancelButton: {
       backgroundColor: colors.containerBackground,
@@ -105,19 +115,19 @@ export const createStyles = (colors: TColors) =>
     errorText: {
       color: "red",
       fontSize: 12,
-      marginTop: 4,
+      marginTop: EXTRA_SMALL_MARGIN,
     },
     errorContainer: {
       backgroundColor: colors.red + "10",
       borderRadius: 8,
-      padding: 12,
-      marginBottom: 16,
+      padding: MEDIUM_PADDING,
+      marginBottom: DEFAULT_MARGIN,
     },
     globalError: {
       color: colors.red,
       fontSize: 14,
       textAlign: "center",
-      marginBottom: 16,
+      marginBottom: DEFAULT_MARGIN,
     },
   });
 
@@ -135,7 +145,7 @@ export const createModalStyles = (colors: TColors) =>
     modalContent: {
       backgroundColor: colors.containerBackground,
       borderRadius: 25,
-      padding: 10,
+      padding: MEDIUM_PADDING,
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -151,10 +161,10 @@ export const createModalStyles = (colors: TColors) =>
     },
     actionsContainer: {
       flexDirection: "row",
-      gap: 30,
+      gap: EXTRA_LARGE_GAP,
       justifyContent: "center",
       alignItems: "center",
-      padding: 15,
+      padding: DEFAULT_PADDING,
     },
     modalButton: {
       backgroundColor: colors.containerBackground,
@@ -164,7 +174,7 @@ export const createModalStyles = (colors: TColors) =>
     modalButtonText: {
       color: colors.textPrimary,
       fontSize: 12,
-      marginTop: 8,
+      marginTop: SMALL_MARGIN,
       textAlign: "center",
     },
     formWrapper: {

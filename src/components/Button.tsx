@@ -11,6 +11,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { TColors } from "../styles/colors";
 import useStyles from "../hooks/useStyles";
 import useColors from "../stores/theme-store";
+import { LARGE_PADDING, MEDIUM_PADDING, SMALL_MARGIN } from "../constants";
 
 interface ButtonProps extends PressableProps {
   title: string;
@@ -80,8 +81,8 @@ export default Button;
 const createStyles = (colors: TColors) =>
   StyleSheet.create({
     button: {
-      paddingVertical: 12,
-      paddingHorizontal: 24,
+      paddingVertical: MEDIUM_PADDING,
+      paddingHorizontal: LARGE_PADDING,
       borderRadius: 12,
       width: "100%",
       shadowColor: "#000",
@@ -137,9 +138,9 @@ const createStyles = (colors: TColors) =>
       opacity: 0.9,
     },
     leftIcon: {
-      marginRight: 8,
+      marginRight: SMALL_MARGIN,
     },
     rightIcon: {
-      marginLeft: 8,
+      marginLeft: SMALL_MARGIN,
     },
   });

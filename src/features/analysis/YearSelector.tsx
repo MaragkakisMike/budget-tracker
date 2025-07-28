@@ -12,6 +12,12 @@ import useStyles from "@/src/hooks/useStyles";
 import useColors from "@/src/stores/theme-store";
 import { TColors } from "@/src/styles/colors";
 import DropdownSelect from "@/src/components/DropdownSelect";
+import {
+  LARGE_PADDING,
+  DEFAULT_PADDING,
+  MEDIUM_PADDING,
+  SMALL_MARGIN,
+} from "@/src/constants";
 
 type Props = {
   years: number[];
@@ -120,15 +126,15 @@ const createStyles = (colors: TColors) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      marginVertical: 8,
+      marginVertical: SMALL_MARGIN,
     },
     arrow: {
-      paddingHorizontal: 12,
+      paddingHorizontal: MEDIUM_PADDING,
     },
     yearText: {
       fontSize: 20,
       fontWeight: "500",
-      paddingHorizontal: 16,
+      paddingHorizontal: DEFAULT_PADDING,
       color: colors.textPrimary,
     },
     modalOverlay: {
@@ -140,11 +146,11 @@ const createStyles = (colors: TColors) =>
       backgroundColor: colors.containerBackground,
       marginHorizontal: 40,
       borderRadius: 8,
-      paddingVertical: 20,
+      paddingVertical: LARGE_PADDING,
       elevation: 5,
     },
     yearItem: {
-      paddingVertical: 12,
+      paddingVertical: MEDIUM_PADDING,
       alignItems: "center",
     },
     activeYearItem: {

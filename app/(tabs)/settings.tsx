@@ -9,7 +9,13 @@ import useStyles from "@/src/hooks/useStyles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import SettingItem from "@/src/components/SettingItem";
 import { TColors } from "@/src/styles/colors";
-import { VERSION } from "@/src/constants";
+import {
+  EXTRA_LARGE_MARGIN,
+  MEDIUM_MARGIN,
+  MEDIUM_PADDING,
+  SMALL_MARGIN,
+  VERSION,
+} from "@/src/constants";
 import { useRouter } from "expo-router";
 import Button from "@/src/components/Button";
 import { useXlsx } from "@/src/hooks/useXlsx";
@@ -142,24 +148,24 @@ export default Settings;
 const createStyles = (colors: TColors) =>
   StyleSheet.create({
     scrollContent: {
-      paddingHorizontal: 16,
+      paddingHorizontal: MEDIUM_PADDING,
     },
     heading: {
       fontSize: 32,
       fontWeight: "700",
       color: colors.textPrimary,
-      marginTop: 32,
-      marginBottom: 28,
+      marginTop: EXTRA_LARGE_MARGIN,
+      marginBottom: EXTRA_LARGE_MARGIN,
     },
     section: {
-      marginBottom: 32,
+      marginBottom: EXTRA_LARGE_MARGIN,
     },
     sectionLabel: {
       fontSize: 14,
       fontWeight: "600",
       color: colors.textSecondary,
-      marginBottom: 12,
-      marginLeft: 8,
+      marginBottom: MEDIUM_MARGIN,
+      marginLeft: SMALL_MARGIN,
     },
     sectionContent: {
       backgroundColor: colors.sectionBackground || colors.background,

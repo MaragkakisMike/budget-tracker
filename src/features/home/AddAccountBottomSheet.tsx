@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import { FormTextInput } from "@/src/components/FormComponents/input";
 import { Account } from "@/src/db/schema";
 import Button from "@/src/components/Button";
+import { LARGE_MARGIN, MEDIUM_MARGIN } from "@/src/constants";
 
 interface AccountBottomSheetProps {
   bottomSheetModalRef: React.MutableRefObject<BottomSheetModal | null>;
@@ -167,7 +168,7 @@ const createStyles = (colors: TColors) =>
       height: 50,
       justifyContent: "center",
       alignItems: "center",
-      marginTop: 10,
+      marginTop: MEDIUM_MARGIN,
       backgroundColor: colors.primary,
     },
     disabledButton: {
@@ -176,13 +177,13 @@ const createStyles = (colors: TColors) =>
     saveButtonText: {
       fontSize: 16,
       fontWeight: "600",
-      marginLeft: 10,
+      marginLeft: MEDIUM_MARGIN,
       color: colors.white,
     },
     buttonsContainer: {
       flexDirection: "row",
       justifyContent: "space-between",
-      marginTop: 20,
+      marginTop: LARGE_MARGIN,
     },
   });
 

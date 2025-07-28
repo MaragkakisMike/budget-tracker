@@ -10,6 +10,13 @@ import { Ionicons } from "@expo/vector-icons";
 import useStyles from "../hooks/useStyles";
 import { TColors } from "../styles/colors";
 import useColors from "../stores/theme-store";
+import {
+  DEFAULT_PADDING,
+  EXTRA_SMALL_MARGIN,
+  MEDIUM_PADDING,
+  SMALL_MARGIN,
+  SMALL_PADDING,
+} from "../constants";
 
 const ContentDividerLoadmoreButton = ({
   isVisible = false,
@@ -73,7 +80,7 @@ const createStyles = (colors: TColors) =>
     container: {
       justifyContent: "center",
       alignItems: "center",
-      paddingHorizontal: 16,
+      paddingHorizontal: DEFAULT_PADDING,
     },
     dividerContainer: {
       flexDirection: "row",
@@ -92,16 +99,16 @@ const createStyles = (colors: TColors) =>
       borderWidth: 1,
       borderColor: colors.border,
       borderRadius: 20,
-      paddingHorizontal: 12,
-      paddingVertical: 8,
-      marginHorizontal: 8,
+      paddingHorizontal: MEDIUM_PADDING,
+      paddingVertical: SMALL_PADDING,
+      marginHorizontal: SMALL_MARGIN,
     },
     iconContainer: {
       width: 16,
       height: 16,
       justifyContent: "center",
       alignItems: "center",
-      marginRight: 4,
+      marginRight: EXTRA_SMALL_MARGIN,
     },
     buttonText: {
       fontSize: 14,

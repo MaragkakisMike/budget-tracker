@@ -10,6 +10,11 @@ import useDatabase from "@/src/hooks/useDatabase";
 
 import { useRef, useState } from "react";
 import { useThisMonthAnalysis } from "@/src/hooks/useAnalysis";
+import {
+  DEFAULT_GAP,
+  EXTRA_SMALL_MARGIN,
+  MEDIUM_MARGIN,
+} from "@/src/constants";
 
 const IncomeExpensesContainer = ({ onSelectAction }) => {
   const { colors } = useColors();
@@ -134,7 +139,7 @@ const createStyles = (colors: TColors) =>
     statsContainer: {
       flexDirection: "row",
       justifyContent: "space-between",
-      gap: 12,
+      gap: DEFAULT_GAP,
     },
     statBlock: {
       flexDirection: "row",
@@ -147,7 +152,7 @@ const createStyles = (colors: TColors) =>
       borderRadius: 24,
       justifyContent: "center",
       alignItems: "center",
-      marginRight: 12,
+      marginRight: MEDIUM_MARGIN,
       borderWidth: 2,
     },
     textContainer: {
@@ -156,7 +161,7 @@ const createStyles = (colors: TColors) =>
     label: {
       fontSize: 14,
       color: colors.textPrimary,
-      marginBottom: 4,
+      marginBottom: EXTRA_SMALL_MARGIN,
     },
     amount: {
       fontSize: 20,
@@ -164,7 +169,7 @@ const createStyles = (colors: TColors) =>
       color: colors.textPrimary,
     },
     indicator: {
-      marginTop: 12,
+      marginTop: MEDIUM_MARGIN,
       height: 1,
       position: "absolute",
       bottom: 10,

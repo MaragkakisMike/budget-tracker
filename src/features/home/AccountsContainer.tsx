@@ -1,7 +1,13 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { Text, View, StyleSheet, ScrollView, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { DEFAULT_PADDING } from "@/src/constants";
+import {
+  LARGE_PADDING,
+  DEFAULT_PADDING,
+  SMALL_PADDING,
+  LARGE_GAP,
+  MEDIUM_MARGIN,
+} from "@/src/constants";
 import { getAccounts } from "@/src/db/queries/accounts";
 import { useLiveQuery } from "drizzle-orm/expo-sqlite";
 import { TColors } from "@/src/styles/colors";
@@ -46,7 +52,7 @@ const AccountsContainer = () => {
           <Text style={styles.sectionTitle}>{t("general.overview")}</Text>
           <Icon name="menu" size={30} color={colors.textPrimary} />
         </View>
-        <ScrollView horizontal style={{ paddingBottom: 4 }}>
+        <ScrollView horizontal style={{ paddingBottom: SMALL_PADDING }}>
           {accounts.map((item, index) => (
             <Pressable
               style={styles.account}
@@ -63,7 +69,7 @@ const AccountsContainer = () => {
               name="add"
               size={30}
               style={{
-                padding: 25,
+                padding: LARGE_PADDING,
               }}
               color={colors.primary}
             />
@@ -89,7 +95,7 @@ const createStyles = (colors: TColors) =>
     container: {
       backgroundColor: colors.containerBackground,
       padding: DEFAULT_PADDING,
-      gap: 20,
+      gap: LARGE_GAP,
       borderBottomLeftRadius: 20,
       borderBottomRightRadius: 20,
       shadowColor: colors.black,
@@ -105,7 +111,7 @@ const createStyles = (colors: TColors) =>
     },
     accountsContainer: {
       width: "100%",
-      marginTop: 10,
+      marginTop: MEDIUM_MARGIN,
     },
     addBtnContainer: {
       borderWidth: 1,
@@ -114,10 +120,10 @@ const createStyles = (colors: TColors) =>
     },
     account: {
       backgroundColor: colors.primary,
-      padding: 16,
+      padding: DEFAULT_PADDING,
       borderRadius: 10,
       alignItems: "center",
-      marginRight: 10,
+      marginRight: MEDIUM_MARGIN,
     },
     accountTitle: {
       fontSize: 16,

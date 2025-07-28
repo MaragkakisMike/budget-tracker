@@ -16,6 +16,7 @@ import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
+import { DEFAULT_PADDING, MEDIUM_PADDING } from "@/src/constants";
 
 export default () => {
   const { t } = useTranslation();
@@ -188,8 +189,8 @@ const createStyles = (colors: TColors) =>
       // borderTopLeftRadius: 20,
       // borderTopRightRadius: 20,
       elevation: 10,
-      paddingHorizontal: 10,
-      paddingTop: 10,
+      paddingHorizontal: DEFAULT_PADDING,
+      paddingTop: MEDIUM_PADDING,
     },
     iosTabBar: {
       height: 0,

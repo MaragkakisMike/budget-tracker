@@ -5,6 +5,7 @@ import { TColors } from "@/src/styles/colors";
 import useStyles from "@/src/hooks/useStyles";
 import useColors from "@/src/stores/theme-store";
 import { ScrollView } from "react-native-gesture-handler";
+import { DEFAULT_GAP, LARGE_PADDING } from "../constants";
 
 function Container(props) {
   const { styles } = useStyles(createStyles);
@@ -36,8 +37,8 @@ const createStyles = (colors: TColors) =>
     },
     container: {
       flex: 1,
-      gap: 10,
-      paddingBottom: 20,
+      gap: DEFAULT_GAP,
+      paddingBottom: LARGE_PADDING,
       backgroundColor: colors.background,
     },
   });
